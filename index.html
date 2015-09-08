@@ -69,10 +69,10 @@
 					return false;
 				});
 
-				$('#key_up').on('click', function() { mazeGame.move('up'); });
-				$('#key_down').on('click', function() { mazeGame.move('down'); });
-				$('#key_right').on('click', function() { mazeGame.move('right'); });
-				$('#key_left').on('click', function() { mazeGame.move('left'); });
+				$('#key_up').on('click', function(ev) { mazeGame.move('up'); return false; });
+				$('#key_down').on('click', function(ev) { mazeGame.move('down'); return false; });
+				$('#key_right').on('click', function(ev) { mazeGame.move('right'); return false; });
+				$('#key_left').on('click', function(ev) { mazeGame.move('left'); return false; });
 			});
 		});
 		
