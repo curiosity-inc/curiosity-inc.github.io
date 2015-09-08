@@ -101,7 +101,7 @@
 		function showTime() {
 			deltaTime = ((new Date).getTime() - startTime.getTime()) / 1000.0;
 			deltaTime = deltaTime.toFixed(2);
-			$("#time").html(deltaTime + " second" + (deltaTime !== 1 ? "s" : ""));
+			$("#time").html(deltaTime + " sec");
 		}
 				
 		function timeTick() {
@@ -112,8 +112,17 @@
 <body>
 	<canvas id="maze">Sorry your browser doesn't support the canvas element. Try upgrading your browser.</canvas>
 	<div id="a">
-		<!-- <h1>Maze<span> <a href="#options">options</a></span></h1> -->
-		<div id="time"></div><div id="steps"></div>
+		<div id="time"></div>
+		<div id="controller" style="position: relative;">
+			<div style="background-color: black; top: -20px; left: 30px; width:40px; height: 40px; position: absolute;">
+			</div>
+			<div style="background-color: black; top: 40px; left: 30px; width:40px; height: 40px; position: absolute;">
+			</div>
+			<div style="background-color: black; top: 10px; left: -20px; width:40px; height: 40px; position: absolute;">
+			</div>
+			<div style="background-color: black; top: 10px; left: 80px; width:40px; height: 40px; position: absolute;">
+			</div>
+		</div>
 	</div>
 	<div id="options">
 		<h2>Cleared!</h2>

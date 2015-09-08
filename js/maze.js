@@ -210,9 +210,11 @@ function MazeGame(canvas, character, background, options) {
 		canvas.width = $('body').width();
 		canvas.height = $('body').height();
 		options.offset.x = Math.floor((canvas.width / 2) - (maze.width * options.scaleX / 2));
-		options.offset.y = Math.floor((canvas.height / 2) - (maze.height * options.scaleY / 2));
-		$("#a").width(maze.width * options.scaleX + 3).css('padding-top', (canvas.height / 2) - (maze.height * options.scaleY / 2) - $('h1').height());
-		$("#time, #steps").css('margin-top', maze.height * options.scaleY);
+		// options.offset.y = Math.floor((canvas.height / 2) - (maze.height * options.scaleY / 2));
+		options.offset.y = 40;
+		$("#a").width(maze.width * options.scaleX + 3)
+		.css('padding-top', options.offset.y);
+		$("#time, #controller").css('margin-top', maze.height * options.scaleY);
 		console.log('width', canvas.width);
 		console.log('height', canvas.height);
 		console.log('offsetx', options.offset.x);
