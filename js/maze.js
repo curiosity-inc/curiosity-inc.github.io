@@ -18,8 +18,8 @@ function MazeGame(canvas, character, background, options) {
 		starting_position: { x: 1, y: 1 },
 		level_size: [10, 10],
 		offset: {x: 0, y: 0},
-		scaleX: 36,
-		scaleY: 63,
+		scaleX: 28,
+		scaleY: 49,
 		user_diameter: 4,
 		user_path_width: 8,
 		onStart: function(){},
@@ -188,12 +188,10 @@ function MazeGame(canvas, character, background, options) {
 		// this.generateMaze();
 		for (var y = 0; y<fixedMaze.length; y++) {
 			for (var x = 0; x<fixedMaze[0].length; x++) {
-				console.log('try', x, y, fixedMaze[y][x]);
 				if ((fixedMaze[y][x] & 1) > 0) this.getCell(x, y).left = false;
 				if ((fixedMaze[y][x] & 2) > 0) this.getCell(x, y).up = false;
 				if ((fixedMaze[y][x] & 4) > 0) this.getCell(x, y).right = false;
 				if ((fixedMaze[y][x] & 8) > 0) this.getCell(x, y).down = false;
-				console.dir(this.getCell(x, y));
 			}
 		}
 		this.end.x = 7;
@@ -259,8 +257,8 @@ function MazeGame(canvas, character, background, options) {
 	}
 	
 	function image(x, y, image) {
-		var offsetX = options.offset.x + (x-0.3) * options.scaleX;
-		var offsetY = options.offset.y + (y-1.3) * options.scaleY;
+		var offsetX = options.offset.x + (x-0.5) * options.scaleX;
+		var offsetY = options.offset.y + (y-1.7) * options.scaleY;
 		ctx.drawImage(image, offsetX, offsetY);
 	}
 	
