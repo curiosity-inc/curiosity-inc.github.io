@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Maze</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="css/maze.css" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/maze.js"></script>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+	<script>
+		var mazeGame;
+		var time, timer, startTime;
+		var mazeOptions = {
+			onGameEnd: function(didWin){
+				clearInterval(timer);
+				gameInProgress = false;
+				center($("#options").show());
+			},
+			onStart: function(){
+				startTime = new Date();
+				timer = setInterval(timeTick, 33);
+				showTime();
+			}
+		}
+		
+		function loadImages(sources, callback) {
+			var images = {};
+			var loadedImages = 0;
+			var numImages = 0;
+			for(var src in sources) {
+				numImages++;
+			}
+			for(var src in sources) {
+				images[src] = new Image();
+				images[src].onload = function() {
+					if(++loadedImages >= numImages) {
+						callback(images);
+					}
+				};
+				images[src].src = sources[src];
+			}
+		}
+
+		var sources = {
+			'background': 'maze.png',
+			'character': 'chelsea.png'
+		}
+		$(document).ready(function () {
+			loadImages(sources, function(images) {
+				console.log('callback');
+				mazeGame = new MazeGame(document.getElementById('maze'), images.character, images.background, mazeOptions);
+				
+				$("form").on('submit', function () {
+					mazeGame = new MazeGame(document.getElementById('maze'), mazeOptions);
+					$('#options, #end-game').hide();
+					return false;
+				});
+				// $('body').on('keypress', '#h, #options', function (e) {
+				// 	return (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) ? false : true;
+				// })
+				$(window).on('click', function(e){
+					if (!$(e.target).is("#options") && $(e.target).parents('#options').length == 0)
+						$('#options').hide();
+				});
+				$('a[href=#options]').on('click', function(){
+					center($('#options').show());
+					return false;
+				});
+			});
+		});
+		
+		$(window).on('keydown', function (e) {
+			var keyCode = e.keyCode || e.which,
+				keyCodes = {
+					37: "left",
+					38: "up",
+					39: "right",
+					40: "down",
+					65: "left",
+					87: "up",
+					68: "right",
+					83: "down"
+				};
+			if (keyCodes[keyCode] !== null && keyCodes[keyCode] !== undefined) {
+				// send arrow keys and wsad to game
+				mazeGame.move(keyCodes[keyCode]);
+				return false;
+			} else if (keyCode === 27) {
+				// close options on escape
+				$('#options').hide();
+				return false;
+			}
+		});
+		
+		function center(e) {
+			e.css('top', $("#maze").offset().top + $("#maze").height() / 2 - e.outerHeight() / 2)
+		}
+		
+		function showTime() {
+			deltaTime = ((new Date).getTime() - startTime.getTime()) / 1000.0;
+			deltaTime = deltaTime.toFixed(2);
+			$("#time").html(deltaTime + " second" + (deltaTime !== 1 ? "s" : ""));
+		}
+				
+		function timeTick() {
+			showTime();
+		}
+	</script>
+</head>
+<body>
+	<canvas id="maze">Sorry your browser doesn't support the canvas element. Try upgrading your browser.</canvas>
+	<div id="a">
+		<!-- <h1>Maze<span> <a href="#options">options</a></span></h1> -->
+		<div id="time"></div><div id="steps"></div>
+	</div>
+	<div id="options">
+		<h2>Cleared!</h2>
+		<form>
+			<button type="submit">Try Again</button>
+		</form>
+	</div>
+</body>
+</html>

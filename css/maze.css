@@ -1,0 +1,105 @@
+body {
+	color:#333;
+	font-family:"Droid Sans",Helvetica,Arial,sans;
+	font-size:14px;
+	margin:0;
+	overflow:hidden;
+}
+
+html, body {
+	height: 100%;
+}
+
+canvas {
+	display:block;
+	position:absolute;
+}
+
+a, a:visited {
+	color:#67b9e8;
+	text-decoration: none;
+}
+
+h1 {
+	margin-top:-.2em;
+	text-indent: 2px;
+}
+	h1 span {
+		font-family:Georgia;
+		font-size:.55em;
+		font-weight:400;
+		color:#666;
+	}
+
+#time,#steps {
+	font-family:Georgia;
+	font-size:20px;
+	float:left;
+	width:49%;
+}
+
+#steps {
+	float:right;
+	text-align:right;
+}
+
+#a {
+	position:relative;
+	margin:0 auto;
+}
+
+#options {
+	display:none;
+	position:absolute;
+	top:50%;
+	left:0;
+	color:#fff;
+	text-align:center;
+	left:0;
+	width:100%;
+	padding:2em 0;
+	box-shadow:0 2px 8px rgba(0,0,0,.5);
+	background:rgba(0,0,0,.85);
+}
+	#options h2 {
+		margin-top:0;
+	}
+	#game-info {
+		margin-top:0;
+		display:none;
+	}
+
+form {
+	text-align:center;
+}
+	form label {
+		display: none;
+	}
+	form input {
+		background: #000;
+		border: 1px solid #333;
+		color: #fff;
+		padding: .3em;
+		font-size: .9em;
+		width: 4em;
+	}
+	form button {
+		display: block;
+		margin: 0 auto;
+		margin-top: 1em;
+		background: #46EE46;
+		color: white;
+		border: none;
+		border-radius: 2px;
+		font-size: 1em;
+		text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
+		padding: .3em 1.4em;
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 1);
+		cursor: pointer;
+	}
+
+fieldset {
+	border:none;
+	margin:0 0 10px;
+	padding:0;
+}
