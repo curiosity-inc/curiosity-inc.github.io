@@ -50,7 +50,7 @@
 		$(document).ready(function () {
 			loadImages(sources, function(images) {
 				console.log('callback');
-				mazeGame = new MazeGame(document.getElementById('maze'), images.character, images.background, mazeOptions);
+				mazeGame = new MazeGame(document.getElementById('maze'), document.getElementById('background'), images.character, images.background, mazeOptions);
 				
 				$("form").on('submit', function () {
 					mazeGame = new MazeGame(document.getElementById('maze'), mazeOptions);
@@ -115,7 +115,10 @@
 	</script>
 </head>
 <body>
-	<canvas id="maze">Sorry your browser doesn't support the canvas element. Try upgrading your browser.</canvas>
+	<div style="position: relative;">
+		<canvas id="background"></canvas>
+		<canvas id="maze">Sorry your browser doesn't support the canvas element. Try upgrading your browser.</canvas>
+	</div>
 	<div id="a">
 		<div id="controller" style="position: relative;">
 			<div id="key_up" style="background-color: black; top: -20px; left: 50px; width:40px; height: 40px; position: absolute;">

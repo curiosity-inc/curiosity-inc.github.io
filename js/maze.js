@@ -1,4 +1,4 @@
-function MazeGame(canvas, character, background, options) {
+function MazeGame(canvas, bgCanvas, character, background, options) {
 	var fixedMaze = [
 	[0,0,0,0,0,0,0,0,0,0],
 	[0,4,9,0,0,0,0,0,0,0],
@@ -32,7 +32,7 @@ function MazeGame(canvas, character, background, options) {
 
 	$(window).on('resize', center);
 	
-	var ctx, currentPos, maze, path, gameInProgress;
+	var ctx, bgCtx, currentPos, maze, path, gameInProgress;
 	var offsets = {
 		"left"	:	{ x: -1, y: 0 },
 		"up"	:	{ x: 0, y:	-1 },
@@ -43,6 +43,9 @@ function MazeGame(canvas, character, background, options) {
 	var rand = new Rand();
 	
 	this.init = function() {
+		if (bgCanvas.getContext) {
+			bgCtx = bgCanvas.getContext('2d');
+		}
 		if (canvas.getContext) {
 			ctx = canvas.getContext("2d");
 			setup(options.level_size[0], options.level_size[1]);
@@ -204,6 +207,9 @@ function MazeGame(canvas, character, background, options) {
 		path = [];
 		path.push(currentPos);
 		center();
+		bgCanvas.width = $('body').width();
+		bgCanvas.height = $('body').height();
+		bgCtx.drawImage(background, options.offset.x, options.offset.y);
 	}
 
 	function center() {
@@ -229,7 +235,7 @@ function MazeGame(canvas, character, background, options) {
 	
 	function draw() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		ctx.drawImage(background, options.offset.x, options.offset.y);
+		// ctx.drawImage(background, options.offset.x, options.offset.y);
 		image(currentPos.x, currentPos.y, character);
 	}
 	
