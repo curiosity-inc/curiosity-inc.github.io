@@ -68,6 +68,11 @@
 					center($('#options').show());
 					return false;
 				});
+
+				$('#key_up').on('click', function() { mazeGame.move('up'); });
+				$('#key_down').on('click', function() { mazeGame.move('down'); });
+				$('#key_right').on('click', function() { mazeGame.move('right'); });
+				$('#key_left').on('click', function() { mazeGame.move('left'); });
 			});
 		});
 		
@@ -112,17 +117,17 @@
 <body>
 	<canvas id="maze">Sorry your browser doesn't support the canvas element. Try upgrading your browser.</canvas>
 	<div id="a">
-		<div id="time"></div>
 		<div id="controller" style="position: relative;">
-			<div style="background-color: black; top: -20px; left: 30px; width:40px; height: 40px; position: absolute;">
+			<div id="key_up" style="background-color: black; top: -20px; left: 50px; width:40px; height: 40px; position: absolute;">
 			</div>
-			<div style="background-color: black; top: 40px; left: 30px; width:40px; height: 40px; position: absolute;">
+			<div id="key_down" style="background-color: black; top: 40px; left: 50px; width:40px; height: 40px; position: absolute;">
 			</div>
-			<div style="background-color: black; top: 10px; left: -20px; width:40px; height: 40px; position: absolute;">
+			<div id="key_left" style="background-color: black; top: 10px; left: 0px; width:40px; height: 40px; position: absolute;">
 			</div>
-			<div style="background-color: black; top: 10px; left: 80px; width:40px; height: 40px; position: absolute;">
+			<div id="key_right" style="background-color: black; top: 10px; left: 100px; width:40px; height: 40px; position: absolute;">
 			</div>
 		</div>
+		<div id="time"></div>
 	</div>
 	<div id="options">
 		<h2>Cleared!</h2>

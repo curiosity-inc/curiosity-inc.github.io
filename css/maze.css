@@ -34,7 +34,12 @@ h1 {
 	font-family:Georgia;
 	font-size:20px;
 	float:left;
-	width:49%;
+}
+#time {
+	width: 31%;
+}
+#controller {
+	width: 68%;
 }
 
 #steps {
