@@ -211,7 +211,7 @@ function MazeGame(canvas, character, background, options) {
 		canvas.height = $('body').height();
 		options.offset.x = Math.floor((canvas.width / 2) - (maze.width * options.scaleX / 2));
 		// options.offset.y = Math.floor((canvas.height / 2) - (maze.height * options.scaleY / 2));
-		options.offset.y = 40;
+		options.offset.y = 24;
 		$("#a").width(maze.width * options.scaleX + 3)
 		.css('padding-top', options.offset.y);
 		$("#time, #controller").css('margin-top', maze.height * options.scaleY);
