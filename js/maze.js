@@ -208,7 +208,7 @@ function MazeGame(canvas, bgCanvas, character, background, options) {
 		path.push(currentPos);
 		center();
 		bgCanvas.width = $('body').width();
-		bgCanvas.height = $('body').height();
+		bgCanvas.height = $('body').height() + 50;
 		bgCtx.drawImage(background, options.offset.x, options.offset.y);
 	}
 
