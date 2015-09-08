@@ -18,8 +18,8 @@ function MazeGame(canvas, character, background, options) {
 		starting_position: { x: 1, y: 1 },
 		level_size: [10, 10],
 		offset: {x: 0, y: 0},
-		scaleX: 28,
-		scaleY: 49,
+		scaleX: 26,
+		scaleY: 46,
 		user_diameter: 4,
 		user_path_width: 8,
 		onStart: function(){},
@@ -257,8 +257,8 @@ function MazeGame(canvas, character, background, options) {
 	}
 	
 	function image(x, y, image) {
-		var offsetX = options.offset.x + (x-0.5) * options.scaleX;
-		var offsetY = options.offset.y + (y-1.7) * options.scaleY;
+		var offsetX = options.offset.x + (x-0.3) * options.scaleX;
+		var offsetY = options.offset.y + (y-1.5) * options.scaleY;
 		ctx.drawImage(image, offsetX, offsetY);
 	}
 	
